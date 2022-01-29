@@ -45,7 +45,7 @@ bool exibirAcertos(char *gabarito, char *chute, int k){
                 correto = true;
                 acertos++;
 
-                if(i == j){
+                if(chute[i] == gabaritoCopia[i]){
                     gabaritoCopia[j] = '\0';
                     printVerde(chute[i]);
                 }
