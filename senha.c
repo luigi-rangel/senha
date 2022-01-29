@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<stdbool.h>
 
 #define MAX_LETRAS 5
 
@@ -25,18 +26,25 @@ int letraNaoChecada(char *checagem, char letra, int *qtd){
     return 1;
 }
 
-void exibirAcertos(char *gabarito, char *chute){
+bool exibirAcertos(char *gabarito, char *chute, int i){
+    char acertos[5] = {0, 0, 0, 0, 0};
+    int qtd = 0;
+
     for(int i = 0; i < 5; i++){
         if(gabarito[i] == chute[i]){
             printf("%c", gabarito[i]);
+            acertos[qtd] = gabarito[i];
+            qtd++;
         }
         else printf("*");
     }
 
-    printf(" - ");
+    if(qtd == 5){
+        printf("\n\n");
+        return true;
+    }
 
-    char acertos[5] = {0, 0, 0, 0, 0};
-    int qtd = 0;
+    printf(" - ");
 
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
@@ -47,21 +55,32 @@ void exibirAcertos(char *gabarito, char *chute){
         }
     }
 
-    printf("\n");
+    if (i == 5){
+        printf("\n\n");
+        return false;
+    }
+
+    printf("\n%d\n", i + 2);
 }
 
 int main(void){
     char palavra[6];
     encontrarPalavra(palavra);
+    printf("1\n");
+    
+    bool ganhou = false;
 
-    for(int i = 0; i < 6; i++){
+    for(int i = 0; i < 6 && ganhou == false; i++){
         char entrada[6];
         fgets(entrada, 6, stdin);
         while(getchar() != '\n');
-        exibirAcertos(palavra, entrada);
+        ganhou = exibirAcertos(palavra, entrada, i);
     }
 
-    printf("%s", palavra);
+    if (ganhou == false){
+        printf("%s", palavra);
+    }
+    
 
     return 0;
 }
