@@ -10,9 +10,9 @@ void encontrarPalavra(char *palavra){
 
     srand(time(NULL));
     int randNumber = rand() % 1000;
-    fseek(palavras, randNumber * 7 * sizeof(char), SEEK_SET);
+    fseek(palavras, randNumber * (MAX_LETRAS + 2) * sizeof(char), SEEK_SET);
 
-    fread(palavra, sizeof(char) * 5, 1, palavras);
+    fread(palavra, sizeof(char), 5, palavras);
 
     return;
 }
@@ -40,9 +40,9 @@ void exibirAcertos(char *gabarito, char *chute){
 
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
-            if(chute[j] == gabarito[i] && letraNaoChecada(acertos, gabarito[i], &qtd)){
-                printf("%c ", gabarito[i]);
-                acertos[qtd] = gabarito[i];
+            if(chute[i] == gabarito[j] && letraNaoChecada(acertos, gabarito[j], &qtd)){
+                printf("%c ", chute[i]);
+                acertos[qtd] = gabarito[j];
             }
         }
     }
