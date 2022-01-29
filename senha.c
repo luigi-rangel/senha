@@ -20,43 +20,34 @@ void encontrarPalavra(char *palavra){
 }
 
 void printVerde(char string){
-    printf("\033[0;32m");
-    printf("%c", string);
-    printf("\033[0m");
+    printf("\033[0;32m%c\033[0m", string);
 }
 
 void printAmarelo(char string){
-    printf("\033[0;33m");
-    printf("%c", string);
-    printf("\033[0m");
+    printf("\033[0;33m%c\033[0m", string);
 }
 
 bool exibirAcertos(char *gabarito, char *chute, int k){
     int acertos = 0;
-    
     char gabaritoCopia[6];
     strcpy(gabaritoCopia, gabarito);
     
     for(int i = 0; i < 5; i++){
         bool correto = false;
-
         for(int j = 0; j < 5; j++){
             if(chute[i] == gabaritoCopia[j]){
                 correto = true;
-                acertos++;
-
                 if(chute[i] == gabaritoCopia[i]){
                     gabaritoCopia[j] = '\0';
                     printVerde(chute[i]);
+                    acertos++;
                 }
                 else{
                     printAmarelo(chute[i]);
                 }
-
                 break;
             }
         }
-
         if(!correto){
             printf("%c", chute[i]);
         }
@@ -65,7 +56,6 @@ bool exibirAcertos(char *gabarito, char *chute, int k){
     if(acertos == 5) return true;
 
     printf("\n\n%d\n", k + 2);
-
     return false;
 }
 
@@ -86,7 +76,6 @@ int main(void){
     if (ganhou == false){
         printf("%s", palavra);
     }
-    
 
     return 0;
 }
