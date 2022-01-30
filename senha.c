@@ -30,16 +30,16 @@ void printAmarelo(char string){
 
 bool exibirAcertos(char *gabarito, char *chute, int k){
     int acertos = 0;
-    char gabaritoCopia[6];
-    strcpy(gabaritoCopia, gabarito);
     
     for(int i = 0; i < 5; i++){
         bool correto = false;
+        char gabaritoCopia[6];
+        strcpy(gabaritoCopia, gabarito);
         for(int j = 0; j < 5; j++){
             if(chute[i] == gabaritoCopia[j]){
                 correto = true;
                 if(chute[i] == gabaritoCopia[i]){
-                    gabaritoCopia[j] = '\0';
+                    gabaritoCopia[i] = '\0';
                     printVerde(chute[i]);
                     acertos++;
                 }
@@ -63,7 +63,7 @@ bool exibirAcertos(char *gabarito, char *chute, int k){
 int main(void){
     char palavra[6];
     encontrarPalavra(palavra);
-    printf("1\n");
+    printf("%s\n1\n", palavra);
     
     bool ganhou = false;
 
@@ -71,7 +71,7 @@ int main(void){
         char entrada[6];
         fgets(entrada, 6, stdin);
         while(getchar() != '\n');
-        ganhou = exibirAcertos(palavra, entrada, k);
+        ganhou = exibirAcertos("afaga", entrada, k);
     }
 
     if (ganhou == false){
