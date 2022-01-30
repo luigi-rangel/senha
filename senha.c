@@ -4,7 +4,7 @@
 #include<time.h>
 #include<stdbool.h>
 
-#define NUM_PALAVRAS 2020
+#define NUM_PALAVRAS 2008
 #define MAX_LETRAS 5
 
 void encontrarPalavra(char *palavra){
