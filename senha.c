@@ -4,6 +4,7 @@
 #include<time.h>
 #include<stdbool.h>
 
+#define NUM_PALAVRAS 2020
 #define MAX_LETRAS 5
 
 void encontrarPalavra(char *palavra){
@@ -11,7 +12,7 @@ void encontrarPalavra(char *palavra){
     palavras = fopen("palavras.txt", "r");
 
     srand(time(NULL));
-    int randNumber = rand() % 1000;
+    int randNumber = rand() % NUM_PALAVRAS;
     fseek(palavras, randNumber * (MAX_LETRAS + 2) * sizeof(char), SEEK_SET);
 
     fread(palavra, sizeof(char), 5, palavras);
