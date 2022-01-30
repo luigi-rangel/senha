@@ -63,7 +63,7 @@ bool exibirAcertos(char *gabarito, char *chute, int k){
 int main(void){
     char palavra[6];
     encontrarPalavra(palavra);
-    printf("%s\n1\n", palavra);
+    printf("1\n");
     
     bool ganhou = false;
 
@@ -71,7 +71,7 @@ int main(void){
         char entrada[6];
         fgets(entrada, 6, stdin);
         while(getchar() != '\n');
-        ganhou = exibirAcertos("afaga", entrada, k);
+        ganhou = exibirAcertos(palavra, entrada, k);
     }
 
     if (ganhou == false){
