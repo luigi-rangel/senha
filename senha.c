@@ -20,12 +20,12 @@ void encontrarPalavra(char *palavra){
     return;
 }
 
-void printVerde(char string){
-    printf("\033[0;32m%c\033[0m", string);
+void printVerde(char c){
+    printf("\033[0;32m%c\033[0m", c);
 }
 
-void printAmarelo(char string){
-    printf("\033[0;33m%c\033[0m", string);
+void printAmarelo(char c){
+    printf("\033[0;33m%c\033[0m", c);
 }
 
 bool exibirAcertos(char *gabarito, char *chute, int k){
