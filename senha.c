@@ -8,7 +8,6 @@
 #define MAX_LETRAS 5
 
 void encontrarPalavra(char *palavra){
-    //branch do pedroooooooo
     FILE *palavras;
     palavras = fopen("palavras.txt", "r");
 
